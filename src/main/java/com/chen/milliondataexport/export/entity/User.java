@@ -6,13 +6,12 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -47,7 +46,7 @@ public class User implements Serializable {
     @ExcelProperty("性别")
     @ApiModelProperty("性别(1:男0:女)")
     @TableField("sex")
-    private Boolean sex;
+    private String sex;
 
     @ExcelProperty("个人头像")
     @ApiModelProperty("个人头像")
@@ -59,10 +58,11 @@ public class User implements Serializable {
     @TableField("email")
     private String email;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ExcelProperty("出生年月日")
     @ApiModelProperty("出生年月日")
     @TableField("birthday")
-    private LocalDate birthday;
+    private Date birthday;
 
     @ExcelProperty("手机")
     @ApiModelProperty("手机")
@@ -79,10 +79,11 @@ public class User implements Serializable {
     @TableField("login_count")
     private Integer loginCount;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ExcelProperty("最后登录时间")
     @ApiModelProperty("最后登录时间")
     @TableField("last_login_time")
-    private LocalDateTime lastLoginTime;
+    private Date lastLoginTime;
 
     @ExcelProperty("最后登录IP")
     @ApiModelProperty("最后登录IP")
@@ -92,17 +93,19 @@ public class User implements Serializable {
     @ExcelIgnore
     @ApiModelProperty("是否删除，1表示已删除")
     @TableField("is_delete")
-    private Boolean isDelete;
+    private String isDelete;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ExcelProperty("创建时间")
     @ApiModelProperty("创建时间")
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ExcelProperty("更新时间")
     @ApiModelProperty("更新时间")
     @TableField("update_time")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     @ExcelProperty("昵称")
     @ApiModelProperty("昵称")
@@ -127,11 +130,11 @@ public class User implements Serializable {
     @ExcelProperty("是否开启邮件通知")
     @ApiModelProperty("是否开启邮件通知 1:开启 0:关闭")
     @TableField("start_email_notification")
-    private Boolean startEmailNotification;
+    private String startEmailNotification;
 
     @ExcelProperty("用户标签")
     @ApiModelProperty("用户标签：0：普通用户，1：管理员，2：博主 等")
     @TableField("user_tag")
-    private Boolean userTag;
+    private String userTag;
 
 }
